@@ -3,4 +3,7 @@ project(aoc25)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(aoc25 main.cpp)
+add_executable(aoc25 main.cpp
+        day_runner.cpp
+        day_runner.h
+        abstract_day.h)
