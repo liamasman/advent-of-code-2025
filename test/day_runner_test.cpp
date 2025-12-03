@@ -5,14 +5,14 @@
 
 class StubDay: public AbstractDay
 {
-    [[nodiscard]] std::string partOne(const std::optional<std::string>& input) const override
+    [[nodiscard]] std::string partOne(const std::string& input) const override
     {
-        return "Part One - " + input.value_or("null");
+        return "Part One - " + input;
     }
 
-    [[nodiscard]] std::string partTwo(const std::optional<std::string>& input) const override
+    [[nodiscard]] std::string partTwo(const std::string& input) const override
     {
-        return "Part Two - " + input.value_or("null");
+        return "Part Two - " + input;
     }
 };
 

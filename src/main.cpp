@@ -1,12 +1,26 @@
 #include <iostream>
+#include <memory>
+#include <vector>
+
+#include "day_runner.h"
+#include "days/day_one.h"
 
 void printUsage(const char* programName)
 {
     std::cout << "Usage: " << programName << " day part [filename]\n";
 }
 
+auto generateDays() -> std::vector<std::unique_ptr<AbstractDay>>
+{
+    auto vector = std::vector<std::unique_ptr<AbstractDay>>{};
+    vector.emplace_back(std::make_unique<DayOne>());
+    return vector;
+}
+
 int main(const int argc, const char *argv[])
 {
+    const auto days = generateDays();
+
     if (argc < 3)
     {
         printUsage(argv[0]);
@@ -32,10 +46,5 @@ int main(const int argc, const char *argv[])
         ? std::optional{std::string{argv[3]}}
         : std::nullopt;
 
-    std::cout << "Running day " << day << ", part " << part;
-    if (input.has_value())
-    {
-        std::cout << " using input file '" << input.value() << "'";
-    }
-    std::cout << "\n";
+    std::cout << DayRunner::run(*days[day-1], part, input) << '\n';
 }

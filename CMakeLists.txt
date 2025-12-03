@@ -15,7 +15,9 @@ FetchContent_MakeAvailable(googletest)
 add_library(aoc25lib SHARED
         src/day_runner.cpp
         include/day_runner.h
-        include/abstract_day.h)
+        include/abstract_day.h
+        src/days/day_one.cpp
+        include/days/day_one.h)
 
 target_include_directories(aoc25lib PUBLIC include)
 
@@ -24,7 +26,8 @@ target_link_libraries(aoc25 PRIVATE aoc25lib)
 
 enable_testing()
 add_executable(aoc25test
-        test/day_runner_test.cpp)
+        test/day_runner_test.cpp
+        test/days/day_one_test.cpp)
 target_link_libraries(
         aoc25test
         aoc25lib
