@@ -2,6 +2,7 @@
 #define AOC25_STRING_UTILS_H
 #include <fstream>
 #include <ranges>
+#include <sstream>
 #include <string>
 
 inline auto getLines(const std::string &input)
@@ -32,4 +33,13 @@ inline auto readFile(const std::string &filename) -> std::string
     return contents;
 }
 
+inline auto repeat(const std::string &str, const int n) -> std::string
+{
+    std::ostringstream os;
+    for(int i{0}; i < n; i++)
+    {
+        os << str;
+    }
+    return os.str();
+}
 #endif //AOC25_STRING_UTILS_H

@@ -13,7 +13,7 @@ auto DayTwo::partOne(const std::string &input) const -> std::string
 
         while (id <= secondIdInt)
         {
-            if (!isValidId(id))
+            if (!isValidIdPartOne(id))
             {
                 sum += id;
             }
@@ -25,13 +25,29 @@ auto DayTwo::partOne(const std::string &input) const -> std::string
 
 auto DayTwo::partTwo(const std::string &input) const -> std::string
 {
-    return "To be implemented";
+    long sum{0};
+    for (const auto &idPairRange : splitCommas(input))
+    {
+        const auto [firstId, secondId]{getPair(std::string{idPairRange.begin(), idPairRange.end()}, '-')};
+        auto id{std::stol(firstId)};
+        const auto secondIdInt{std::stol(secondId)};
+
+        while (id <= secondIdInt)
+        {
+            if (!isValidIdPartTwo(id))
+            {
+                sum += id;
+            }
+            ++id;
+        }
+    }
+    return std::to_string(sum);
 }
 
-auto DayTwo::isValidId(long id) -> bool
+auto DayTwo::isValidIdPartOne(const long id) -> bool
 
 {
-    std::string asString{std::to_string(id)};
+    const std::string asString{std::to_string(id)};
     if (asString.size() % 2 != 0)
     {
         return true;
@@ -48,4 +64,22 @@ auto DayTwo::isValidId(long id) -> bool
         ++i;
     }
     return false;
+}
+
+auto DayTwo::isValidIdPartTwo(const long id) -> bool
+{
+    const std::string asString{std::to_string(id)};
+    for (int i{1}; i <= asString.size() / 2; ++i)
+    {
+        if (asString.size() % i != 0)
+        {
+            continue;
+        }
+        const auto substring = asString.substr(0, i);
+        if (const auto repeated = repeat(substring, asString.size() / i); repeated == asString)
+        {
+            return false;
+        }
+    }
+    return true;
 }
