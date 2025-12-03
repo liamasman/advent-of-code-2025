@@ -4,26 +4,16 @@
 
 auto DayTwo::partOne(const std::string &input) const -> std::string
 {
-    long sum{0};
-    for (const auto &idPairRange : splitCommas(input))
-    {
-        const auto [firstId, secondId]{getPair(std::string{idPairRange.begin(), idPairRange.end()}, '-')};
-        auto id{std::stol(firstId)};
-        const auto secondIdInt{std::stol(secondId)};
 
-        while (id <= secondIdInt)
-        {
-            if (!isValidIdPartOne(id))
-            {
-                sum += id;
-            }
-            ++id;
-        }
-    }
-    return std::to_string(sum);
+    return runAnalysis(input, &DayTwo::isValidIdPartOne);
 }
 
 auto DayTwo::partTwo(const std::string &input) const -> std::string
+{
+    return runAnalysis(input, &DayTwo::isValidIdPartTwo);
+}
+
+auto DayTwo::runAnalysis(const std::string &input, const auto isValidId) -> std::string
 {
     long sum{0};
     for (const auto &idPairRange : splitCommas(input))
@@ -34,7 +24,7 @@ auto DayTwo::partTwo(const std::string &input) const -> std::string
 
         while (id <= secondIdInt)
         {
-            if (!isValidIdPartTwo(id))
+            if (!isValidId(id))
             {
                 sum += id;
             }
