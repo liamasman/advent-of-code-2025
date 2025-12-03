@@ -1,4 +1,4 @@
-#include "day_runner.h"
+#include "../include/day_runner.h"
 
 #include <fstream>
 #include <iostream>
