@@ -1,7 +1,5 @@
 #include "../include/day_runner.h"
-
-#include <fstream>
-#include <iostream>
+#include "../include/utils/string_utils.h"
 
 auto DayRunner::run(const AbstractDay& day, const int part, const std::optional<std::string>& inputFilename) -> std::string
 {
@@ -19,13 +17,4 @@ auto DayRunner::run(const AbstractDay& day, const int part, const std::optional<
     }
 }
 
-auto DayRunner::readFile(const std::string &filename) -> std::string
-{
-    //TODO exception if file does not exist
-    std::ifstream inputFile{filename};
-    const auto contents = std::string{
-        (std::istreambuf_iterator(inputFile)), std::istreambuf_iterator<char>()
-    };
-    inputFile.close();
-    return contents;
-}
+

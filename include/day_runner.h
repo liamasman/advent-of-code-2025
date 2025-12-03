@@ -10,9 +10,6 @@ class DayRunner
 {
 public:
     static auto run(const AbstractDay& day, int part, const std::optional<std::string>& inputFilename) -> std::string;
-
-private:
-    static auto readFile(const std::string& filename) -> std::string;
 };
 
 
