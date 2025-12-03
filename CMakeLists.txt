@@ -17,7 +17,9 @@ add_library(aoc25lib SHARED
         include/day_runner.h
         include/abstract_day.h
         src/days/day_one.cpp
-        include/days/day_one.h)
+        include/days/day_one.h
+        include/utils/string_utils.h
+)
 
 target_include_directories(aoc25lib PUBLIC include)
 
