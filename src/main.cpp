@@ -17,7 +17,7 @@ auto generateDays() -> std::vector<std::unique_ptr<AbstractDay>>
     return vector;
 }
 
-int main(const int argc, const char *argv[])
+auto main(const int argc, const char *argv[]) -> int
 {
     const auto days = generateDays();
 

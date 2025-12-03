@@ -6,8 +6,8 @@
 class DayOne final : public AbstractDay
 {
 public:
-    [[nodiscard]] std::string partOne(const std::string &input) const override;
-    [[nodiscard]] std::string partTwo(const std::string &input) const override;
+    [[nodiscard]] auto partOne(const std::string &input) const -> std::string override;
+    [[nodiscard]] auto partTwo(const std::string &input) const -> std::string override;
 };
 
 

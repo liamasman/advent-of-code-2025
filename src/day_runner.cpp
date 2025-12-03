@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-std::string DayRunner::run(const AbstractDay& day, const int part, const std::optional<std::string>& inputFilename)
+auto DayRunner::run(const AbstractDay& day, const int part, const std::optional<std::string>& inputFilename) -> std::string
 {
     const std::string input = inputFilename.has_value()
             ? readFile(inputFilename.value())
@@ -19,7 +19,7 @@ std::string DayRunner::run(const AbstractDay& day, const int part, const std::op
     }
 }
 
-std::string DayRunner::readFile(const std::string &filename)
+auto DayRunner::readFile(const std::string &filename) -> std::string
 {
     //TODO exception if file does not exist
     std::ifstream inputFile{filename};

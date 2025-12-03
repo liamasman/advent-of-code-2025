@@ -7,7 +7,7 @@
 #include <iostream>
 #include <ranges>
 
-std::string DayOne::partOne(const std::string& input) const
+auto DayOne::partOne(const std::string& input) const -> std::string
 {
     int pointer{50};
     int count{0};
@@ -43,7 +43,7 @@ std::string DayOne::partOne(const std::string& input) const
     return std::to_string(count);
 }
 
-std::string DayOne::partTwo(const std::string& input) const
+auto DayOne::partTwo(const std::string& input) const -> std::string
 {
     int pointer{50};
     int count{0};
