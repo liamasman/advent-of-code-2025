@@ -4,6 +4,7 @@
 
 #include "day_runner.h"
 #include "days/day_one.h"
+#include "days/day_two.h"
 
 void printUsage(const char* programName)
 {
@@ -14,6 +15,7 @@ auto generateDays() -> std::vector<std::unique_ptr<AbstractDay>>
 {
     auto vector = std::vector<std::unique_ptr<AbstractDay>>{};
     vector.emplace_back(std::make_unique<DayOne>());
+    vector.emplace_back(std::make_unique<DayTwo>());
     return vector;
 }
 
