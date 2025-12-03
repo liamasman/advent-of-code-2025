@@ -21,6 +21,7 @@ std::string DayRunner::run(const AbstractDay& day, const int part, const std::op
 
 std::string DayRunner::readFile(const std::string &filename)
 {
+    //TODO exception if file does not exist
     std::ifstream inputFile{filename};
     const auto contents = std::string{
         (std::istreambuf_iterator(inputFile)), std::istreambuf_iterator<char>()
