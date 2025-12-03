@@ -7,7 +7,7 @@ std::string DayRunner::run(const AbstractDay& day, const int part, const std::op
 {
     const std::optional<std::string> input = inputFilename.has_value()
             ? std::optional{readFile(inputFilename.value())}
-            : std::nullopt;
+            : std::nullopt; //TODO if not passed a filename, read from stdin
 
     if (part == 1)
     {

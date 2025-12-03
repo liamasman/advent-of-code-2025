@@ -7,8 +7,8 @@ class AbstractDay
 public:
     virtual ~AbstractDay() = default;
 
-    virtual const std::string partOne(const std::optional<std::string>& input) const;
-    virtual const std::string partTwo(const std::optional<std::string>& input) const;
+    [[nodiscard]] virtual std::string partOne(const std::optional<std::string>& input) const = 0;
+    [[nodiscard]] virtual std::string partTwo(const std::optional<std::string>& input) const = 0;
 };
 
 #endif //AOC25_ABSTRACT_DAY_H

@@ -24,7 +24,7 @@ target_link_libraries(aoc25 PRIVATE aoc25lib)
 
 enable_testing()
 add_executable(aoc25test
-        test/hello_test.cpp)
+        test/day_runner_test.cpp)
 target_link_libraries(
         aoc25test
         aoc25lib
