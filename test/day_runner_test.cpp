@@ -1,4 +1,4 @@
-#include "../include/runner/day_runner.h"
+#include "runner/day_runner.h"
 
 #include <fstream>
 #include <gtest/gtest.h>

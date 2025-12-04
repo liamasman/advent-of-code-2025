@@ -1,8 +1,4 @@
-//
-// Created by liam on 03/12/2025.
-//
-
-#include "../../include/days/day_one.h"
+#include "days/day_one.h"
 
 #include <iostream>
 #include <ranges>

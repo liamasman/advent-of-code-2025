@@ -1,7 +1,5 @@
-#include "../include/days/day_four.h"
-
+#include "days/day_four.h"
 #include "utils/grid_utils.h"
-#include <array>
 
 constexpr auto ROLL = '@';
 

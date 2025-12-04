@@ -1,5 +1,5 @@
-#include "../include/utils/grid_utils.h"
-#include "../include/utils/grid.h"
+#include "utils/grid_utils.h"
+#include "utils/grid.h"
 
 #include <gtest/gtest.h>
 

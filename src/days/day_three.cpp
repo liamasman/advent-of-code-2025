@@ -1,10 +1,10 @@
-#include "../include/days/day_three.h"
+#include "days/day_three.h"
+#include "utils/string_utils.h"
 
-#include <assert.h>
+#include <cassert>
 #include <cmath>
 #include <vector>
 
-#include "utils/string_utils.h"
 
 auto DayThree::partOne(const std::string &input) const -> std::string
 {

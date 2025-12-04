@@ -1,4 +1,4 @@
-#include "../include/utils/grid.h"
+#include "utils/grid.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>

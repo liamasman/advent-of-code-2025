@@ -1,8 +1,8 @@
-#include "../../include/runner/day_runner.h"
+#include "runner/day_runner.h"
+#include "utils/string_utils.h"
 
 #include <chrono>
 
-#include "../../include/utils/string_utils.h"
 #include "runner/RunResult.h"
 
 auto DayRunner::run(const AbstractDay& day, const int part, const std::optional<std::string>& inputFilename) -> RunResult

@@ -1,5 +1,4 @@
-#include "../../include/days/day_two.h"
-
+#include "days/day_two.h"
 #include "utils/string_utils.h"
 
 auto DayTwo::partOne(const std::string &input) const -> std::string

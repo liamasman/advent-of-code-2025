@@ -1,7 +1,7 @@
 #ifndef AOC25_GRID_H
 #define AOC25_GRID_H
 #include <array>
-#include <assert.h>
+#include <cassert>
 #include <string>
 #include <vector>
 #include <iostream>

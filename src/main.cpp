@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 
-#include "../include/runner/day_runner.h"
+#include "runner/day_runner.h"
 #include "days/day_four.h"
 #include "days/day_one.h"
 #include "days/day_three.h"
