@@ -5,6 +5,7 @@
 #include <cmath>
 #include <vector>
 
+static constexpr int MAX_BATTERIES{12};
 
 auto DayThree::partOne(const std::string &input) const -> std::string
 {
@@ -69,9 +70,9 @@ auto DayThree::maxJoltagePartOne(const std::string &bank) const -> long
 auto DayThree::maxJoltagePartTwo(const std::string &bank) const -> long
 {
     // maxJoltages[n][m] = maxJoltage for n batteries from the last m batteries of the bank
-    std::vector maxJoltages(13, std::vector(bank.length() + 1, 0L));
+    std::vector maxJoltages(MAX_BATTERIES + 1, std::vector(bank.length() + 1, 0L));
 
-    for (int numBatteries{1}; numBatteries <= 12; ++numBatteries)
+    for (int numBatteries{1}; numBatteries <= MAX_BATTERIES; ++numBatteries)
     {
         for (int batteriesInBank{numBatteries}; batteriesInBank <= bank.length(); ++batteriesInBank)
         {
