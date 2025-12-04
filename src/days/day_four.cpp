@@ -1,6 +1,7 @@
 #include "../include/days/day_four.h"
 
 #include "utils/grid_utils.h"
+#include <array>
 
 constexpr auto ROLL = '@';
 
@@ -64,39 +65,25 @@ auto DayFour::countNeighbours(const std::vector<std::vector<char>> &grid,
     int width, int height,
     int x, int y) const -> int
 {
+    constexpr std::array<std::pair<int, int>, 8> directions = {{{-1, 0},
+                                                                {-1, -1},
+                                                                {0, -1},
+                                                                {1, -1},
+                                                                {1, 0},
+                                                                {1, 1},
+                                                                {0, 1},
+                                                                {-1, 1}}};
+
     int count{0};
-    if (x > 0 && grid[y][x - 1] == ROLL)
+    for (const auto& [dx, dy] : directions)
     {
-        ++count;
-    }
-    if (x > 0 && y > 0 && grid[y - 1][x - 1] == ROLL)
-    {
-        ++count;
-    }
-    if (y > 0 && grid[y - 1][x] == ROLL)
-    {
-        ++count;
-    }
-    if (y > 0 && x < width - 1 && grid[y - 1][x + 1] == ROLL)
-    {
-        ++count;
-    }
-    if (x < width - 1 && grid[y][x + 1] == ROLL)
-    {
-        ++count;
-    }
-    if (x < width - 1 && y < height - 1 && grid[y + 1][x + 1] == ROLL)
-    {
-        ++count;
-    }
-    if (y < height - 1 && grid[y + 1][x] == ROLL)
-    {
-        ++count;
-    }
-    if (y < height - 1 && x > 0 && grid[y + 1][x - 1] == ROLL)
-    {
-        ++count;
+        const int newX = x + dx;
+        const int newY = y + dy;
+
+        if (newX >= 0 && newX < width && newY >= 0 && newY < height && grid[newY][newX] == ROLL)
+        {
+            ++count;
+        }
     }
     return count;
 }
-
