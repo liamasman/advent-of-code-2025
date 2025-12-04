@@ -22,7 +22,7 @@ private:
     constexpr auto collectNeighbours(int x, int y) const -> std::vector<CellPtr>
     {
         std::vector<CellPtr> neighbours{};
-        for (const auto& [dx, dy] : directions)
+        for (const auto& [dx, dy] : DIRECTIONS)
         {
             const int neighbourX = x + dx;
             const int neighbourY = y + dy;
@@ -39,7 +39,7 @@ private:
         return y * _width + x;
     }
 
-    static constexpr std::array<std::pair<int, int>, 8> directions = {{{-1, 0},
+    static constexpr std::array<std::pair<int, int>, 8> DIRECTIONS = {{{-1, 0},
                                                             {-1, -1},
                                                             {0, -1},
                                                             {1, -1},
@@ -82,7 +82,7 @@ public:
     constexpr auto getNeighbours(int x, int y) const -> std::vector<char>
     {
         std::vector<char> neighbours{};
-        for (const auto& [dx, dy] : directions)
+        for (const auto& [dx, dy] : DIRECTIONS)
         {
             const int neighbourX = x + dx;
             const int neighbourY = y + dy;
