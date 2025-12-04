@@ -27,6 +27,7 @@ add_library(aoc25lib SHARED
         include/days/day_four.h
         src/days/day_four.cpp
         include/utils/grid_utils.h
+        include/utils/grid.h
 )
 
 target_include_directories(aoc25lib PUBLIC include)
@@ -41,11 +42,14 @@ add_executable(aoc25test
         test/days/day_two_test.cpp
         test/days/day_three_test.cpp
         test/days/day_four_test.cpp
-        test/utils/grid_utils_test.cpp)
+        test/utils/grid_utils_test.cpp
+        test/utils/grid_test.cpp
+)
 target_link_libraries(
         aoc25test
         aoc25lib
         GTest::gtest_main
+        GTest::gmock
 )
 include(GoogleTest)
 gtest_discover_Tests(aoc25test)

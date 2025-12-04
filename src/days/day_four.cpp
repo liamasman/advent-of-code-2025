@@ -8,16 +8,14 @@ constexpr auto ROLL = '@';
 auto DayFour::partOne(const std::string &input) const -> std::string
 {
     auto grid = parseGrid(input);
-    const int height{static_cast<int>(grid.size())};
-    const int width{static_cast<int>(grid[0].size())};
     int count{0};
-    for (int x{0}; x < width; ++x)
+    for (int x{0}; x < grid.width(); ++x)
     {
-        for (int y{0}; y < height; ++y)
+        for (int y{0}; y < grid.height(); ++y)
         {
-            if (grid[y][x] == ROLL)
+            if (grid.getCell(x, y) == ROLL)
             {
-                if (countNeighbours(grid, width, height, x, y) < 4)
+                if (countNeighbours(grid, x, y) < 4)
                 {
                     ++count;
                 }
@@ -31,28 +29,26 @@ auto DayFour::partTwo(const std::string &input) const -> std::string
 {
     auto currentGrid = parseGrid(input);
     auto nextGrid = currentGrid;
-    const int height{static_cast<int>(currentGrid.size())};
-    const int width{static_cast<int>(currentGrid[0].size())};
     int totalRemoved{0};
     for (;;)
     {
         bool removed = false;
-        for (int x{0}; x < width; ++x)
+        for (int x{0}; x < currentGrid.width(); ++x)
         {
-            for (int y{0}; y < height; ++y)
+            for (int y{0}; y < currentGrid.height(); ++y)
             {
-                if (currentGrid[y][x] == ROLL)
+                if (currentGrid.getCell(x, y) == ROLL)
                 {
-                    if (countNeighbours(currentGrid, width, height, x, y) < 4)
+                    if (countNeighbours(currentGrid, x, y) < 4)
                     {
-                        nextGrid[y][x] = '.';
+                        nextGrid.setCell(x, y, '.');
                         ++totalRemoved;
                         removed = true;
                     }
                 }
                 else
                 {
-                    nextGrid[y][x] = '.';
+                    nextGrid.setCell(x, y, '.');
                 }
             }
         }
@@ -60,31 +56,18 @@ auto DayFour::partTwo(const std::string &input) const -> std::string
         {
             break;
         }
-        currentGrid.swap(nextGrid);
+        std::swap(currentGrid, nextGrid);
     }
     return std::to_string(totalRemoved);
 }
 
-auto DayFour::countNeighbours(const std::vector<std::vector<char>> &grid,
-    int width, int height,
+auto DayFour::countNeighbours(const Grid &grid,
     int x, int y) const -> int
 {
-    constexpr std::array<std::pair<int, int>, 8> directions = {{{-1, 0},
-                                                                {-1, -1},
-                                                                {0, -1},
-                                                                {1, -1},
-                                                                {1, 0},
-                                                                {1, 1},
-                                                                {0, 1},
-                                                                {-1, 1}}};
-
     int count{0};
-    for (const auto& [dx, dy] : directions)
+    for (const auto& neighbour : grid.getNeighbours(x, y))
     {
-        const int newX = x + dx;
-        const int newY = y + dy;
-
-        if (newX >= 0 && newX < width && newY >= 0 && newY < height && grid[newY][newX] == ROLL)
+        if (neighbour == ROLL)
         {
             ++count;
         }
