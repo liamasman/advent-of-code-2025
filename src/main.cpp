@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 
-#include "day_runner.h"
+#include "../include/runner/day_runner.h"
 #include "days/day_four.h"
 #include "days/day_one.h"
 #include "days/day_three.h"
@@ -52,5 +52,11 @@ auto main(const int argc, const char *argv[]) -> int
         ? std::optional{std::string{argv[3]}}
         : std::nullopt;
 
-    std::cout << DayRunner::run(*days[day-1], part, input) << '\n';
+    const auto result{DayRunner::run(*days[day-1], part, input)};
+
+    std::cout << "Result: " << result.result << '\n';
+    std::cout << "File reading took: " << result.fileReadDuration.count() << "us\n";
+    std::cout << "Calculation took: " << result.runDuration.count() << "us\n";
+
+    return 0;
 }

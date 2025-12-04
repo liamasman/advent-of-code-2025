@@ -1,4 +1,4 @@
-#include "day_runner.h"
+#include "../include/runner/day_runner.h"
 
 #include <fstream>
 #include <gtest/gtest.h>
@@ -23,7 +23,7 @@ TEST(DayRunnerTest, PassesFileContentsToPartOne) {
     file << data;
     file.close();
 
-    const auto result = DayRunner::run(StubDay{}, 1, filename);
+    const auto result = DayRunner::run(StubDay{}, 1, filename, TODO);
     EXPECT_EQ(result, "Part One - This is some data.");
 }
 
@@ -34,6 +34,6 @@ TEST(DayRunnerTest, PassesFileContentsToPartTwo) {
     file << data;
     file.close();
 
-    const auto result = DayRunner::run(StubDay{}, 2, filename);
+    const auto result = DayRunner::run(StubDay{}, 2, filename, TODO);
     EXPECT_EQ(result, "Part Two - This is some data.");
 }

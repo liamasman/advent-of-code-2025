@@ -13,8 +13,9 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_library(aoc25lib SHARED
-        src/day_runner.cpp
-        include/day_runner.h
+        src/runner/day_runner.cpp
+        include/runner/day_runner.h
+        include/runner/RunResult.h
         include/abstract_day.h
         src/days/day_one.cpp
         include/days/day_one.h
