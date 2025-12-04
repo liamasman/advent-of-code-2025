@@ -23,7 +23,7 @@ TEST(DayRunnerTest, PassesFileContentsToPartOne) {
     file << data;
     file.close();
 
-    const auto result = DayRunner::run(StubDay{}, 1, filename, TODO);
+    const auto result = DayRunner::run(StubDay{}, 1, filename).result;
     EXPECT_EQ(result, "Part One - This is some data.");
 }
 
@@ -34,6 +34,6 @@ TEST(DayRunnerTest, PassesFileContentsToPartTwo) {
     file << data;
     file.close();
 
-    const auto result = DayRunner::run(StubDay{}, 2, filename, TODO);
+    const auto result = DayRunner::run(StubDay{}, 2, filename).result;
     EXPECT_EQ(result, "Part Two - This is some data.");
 }
