@@ -17,7 +17,7 @@ auto DayTwo::runAnalysis(const std::string &input, const auto isValidId) -> std:
     long sum{0};
     for (const auto &idPairRange : splitCommas(input))
     {
-        const auto [firstId, secondId]{getPair(std::string{idPairRange.begin(), idPairRange.end()}, '-')};
+        const auto [firstId, secondId]{getPair({idPairRange.begin(), idPairRange.end()}, '-')};
         auto id{std::stol(firstId)};
         const auto secondIdInt{std::stol(secondId)};
 
