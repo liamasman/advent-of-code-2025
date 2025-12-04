@@ -1,6 +1,7 @@
 #ifndef AOC25_GRID_H
 #define AOC25_GRID_H
 #include <array>
+#include <assert.h>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -8,7 +9,7 @@
 class Grid
 {
 private:
-    std::string _data;
+    std::vector<char> _data;
     int _width;
     int _height;
 
@@ -47,9 +48,17 @@ private:
                                                             {0, 1},
                                                             {-1, 1}}};
 public:
-    constexpr Grid(const std::string &data, int width, int height)
+    constexpr Grid(const std::vector<char> &data, int width, int height)
         : _data{data}, _width{width}, _height{height}
-    {}
+    {
+        assert(data.size() == _width * _height);
+    }
+    
+    constexpr Grid(const std::string &data, int width, int height)
+        : _data{data.begin(), data.end()}, _width{width}, _height{height}
+    {
+        assert(data.size() == _width * _height);
+    }
 
     constexpr auto getCell(int x, int y) -> char
     {
