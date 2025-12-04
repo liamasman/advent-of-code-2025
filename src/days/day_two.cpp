@@ -3,7 +3,6 @@
 
 auto DayTwo::partOne(const std::string &input) const -> std::string
 {
-
     return runAnalysis(input, &DayTwo::isValidIdPartOne);
 }
 

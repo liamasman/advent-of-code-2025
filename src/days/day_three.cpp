@@ -2,10 +2,15 @@
 #include "utils/string_utils.h"
 
 #include <cassert>
-#include <cmath>
 #include <vector>
 
 static constexpr int MAX_BATTERIES{12};
+static constexpr  std::array<long, 13> POWERS_OF_TEN = {
+    1, 10, 100, 1'000,
+    10'000, 100'000, 1'000'000, 10'000'000,
+    100'000'000, 1'000'000'000, 10'000'000'000, 100'000'000'000,
+    1'000'000'000'000
+};
 
 auto DayThree::partOne(const std::string &input) const -> std::string
 {
@@ -35,7 +40,7 @@ auto DayThree::partTwo(const std::string &input) const -> std::string
     return std::to_string(total);
 }
 
-auto DayThree::maxJoltagePartOne(const std::string &bank) const -> long
+auto DayThree::maxJoltagePartOne(const std::string &bank) -> long
 {
     int a{static_cast<int>(bank.length() - 2)};
     int b{static_cast<int>(bank.length() - 1)};
@@ -67,7 +72,7 @@ auto DayThree::maxJoltagePartOne(const std::string &bank) const -> long
     return 10 * max1 + max2;
 }
 
-auto DayThree::maxJoltagePartTwo(const std::string &bank) const -> long
+auto DayThree::maxJoltagePartTwo(const std::string &bank) -> long
 {
     // maxJoltages[n][m] = maxJoltage for n batteries from the last m batteries of the bank
     std::vector maxJoltages(MAX_BATTERIES + 1, std::vector(bank.length() + 1, 0L));
@@ -77,7 +82,7 @@ auto DayThree::maxJoltagePartTwo(const std::string &bank) const -> long
         for (int batteriesInBank{numBatteries}; batteriesInBank <= bank.length(); ++batteriesInBank)
         {
             maxJoltages[numBatteries][batteriesInBank] = std::max(
-                (bank[bank.length() - batteriesInBank] - '0') * static_cast<long>(std::pow(10, numBatteries - 1)) + maxJoltages[numBatteries - 1][batteriesInBank-1],
+                (bank[bank.length() - batteriesInBank] - '0') * POWERS_OF_TEN[numBatteries - 1] + maxJoltages[numBatteries - 1][batteriesInBank-1],
                 maxJoltages[numBatteries][batteriesInBank - 1]
             );
         }
