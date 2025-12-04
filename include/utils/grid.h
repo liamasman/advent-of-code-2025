@@ -14,28 +14,12 @@ private:
     int _width;
     int _height;
 
-    constexpr auto isValidPosition(int x, int y) const -> bool
+    constexpr auto isValidPosition(const int x, const int y) const -> bool
     {
         return x >= 0 && x < _width && y >= 0 && y < _height;
     }
 
-    template<class CellPtr>
-    constexpr auto collectNeighbours(int x, int y) const -> std::vector<CellPtr>
-    {
-        std::vector<CellPtr> neighbours{};
-        for (const auto& [dx, dy] : DIRECTIONS)
-        {
-            const int neighbourX = x + dx;
-            const int neighbourY = y + dy;
-            if (isValidPosition(neighbourX, neighbourY))
-            {
-                neighbours.push_back(const_cast<Grid*>(this)->getCell(neighbourX, neighbourY));
-            }
-        }
-        return neighbours;
-    }
-
-    constexpr auto coordinateIndex(int x, int y) const -> int
+    constexpr auto coordinateIndex(const int x, const int y) const -> int
     {
         return y * _width + x;
     }
@@ -54,7 +38,7 @@ private:
         assert(dataSize == static_cast<size_t>(width) * height);
     }
 public:
-    constexpr Grid(const std::vector<T> &data, int width, int height)
+    constexpr Grid(const std::vector<T> &data, const int width, const int height)
         : _data{data}, _width{width}, _height{height}
     {
         validateDimensions(data.size(), width, height);
@@ -65,22 +49,22 @@ public:
     {
     }
 
-    constexpr auto getCell(int x, int y) -> T
+    constexpr auto getCell(const int x, const int y) -> T
     {
         return _data[y * _width + x];
     }
 
-    constexpr auto getCell(int x, int y) const -> const T
+    constexpr auto getCell(const int x, const int y) const -> T
     {
         return _data[y * _width + x];
     }
 
-    constexpr auto setCell(int x, int y, T value) -> void
+    constexpr auto setCell(const int x, const int y, T value) -> void
     {
         _data[coordinateIndex(x, y)] = value;
     }
 
-    constexpr auto getNeighbours(int x, int y) const -> std::vector<T>
+    constexpr auto getNeighbours(const int x, const int y) const -> std::vector<T>
     {
         std::vector<char> neighbours{};
         for (const auto& [dx, dy] : DIRECTIONS)
