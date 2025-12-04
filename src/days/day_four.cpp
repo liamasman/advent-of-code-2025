@@ -27,28 +27,23 @@ auto DayFour::partOne(const std::string &input) const -> std::string
 
 auto DayFour::partTwo(const std::string &input) const -> std::string
 {
-    auto currentGrid = parseGrid(input);
-    auto nextGrid = currentGrid;
+    auto grid = parseGrid(input);
     int totalRemoved{0};
     for (;;)
     {
         bool removed = false;
-        for (int x{0}; x < currentGrid.width(); ++x)
+        for (int x{0}; x < grid.width(); ++x)
         {
-            for (int y{0}; y < currentGrid.height(); ++y)
+            for (int y{0}; y < grid.height(); ++y)
             {
-                if (currentGrid.getCell(x, y) == ROLL)
+                if (grid.getCell(x, y) == ROLL)
                 {
-                    if (countNeighbours(currentGrid, x, y) < 4)
+                    if (countNeighbours(grid, x, y) < 4)
                     {
-                        nextGrid.setCell(x, y, '.');
+                        grid.setCell(x, y, '.');
                         ++totalRemoved;
                         removed = true;
                     }
-                }
-                else
-                {
-                    nextGrid.setCell(x, y, '.');
                 }
             }
         }
@@ -56,7 +51,6 @@ auto DayFour::partTwo(const std::string &input) const -> std::string
         {
             break;
         }
-        std::swap(currentGrid, nextGrid);
     }
     return std::to_string(totalRemoved);
 }
