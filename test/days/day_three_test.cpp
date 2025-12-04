@@ -44,3 +44,56 @@ TEST(DayThreeTest, PartOneTrialThree)
 
     EXPECT_EQ(day_three.partOne(input), "77");
 }
+
+TEST(DayThreeTest, PartTwoExample)
+{
+    const std::string input{
+        "987654321111111\n"
+        "811111111111119\n"
+        "234234234234278\n"
+        "818181911112111"
+    };
+    const DayThree day_three{};
+
+    EXPECT_EQ(day_three.partTwo(input), "3121910778619");
+}
+
+TEST(DayThreeTest, PartTwoTrialOne)
+{
+    const std::string input{
+        "987654321111111"
+    };
+    const DayThree day_three{};
+
+    EXPECT_EQ(day_three.partTwo(input), "987654321111");
+}
+
+TEST(DayThreeTest, PartTwoTrialTwo)
+{
+    const std::string input{
+        "811111111111119"
+    };
+    const DayThree day_three{};
+
+    EXPECT_EQ(day_three.partTwo(input), "811111111119");
+}
+
+TEST(DayThreeTest, PartTwoTrialThree)
+{
+    const std::string input{
+        "234234234234278"
+    };
+    const DayThree day_three{};
+
+    EXPECT_EQ(day_three.partTwo(input), "434234234278");
+}
+
+TEST(DayThreeTest, PartTwoTrialFour)
+{
+    const std::string input{
+        "818181911112111"
+    };
+    const DayThree day_three{};
+
+    EXPECT_EQ(day_three.partTwo(input), "888911112111");
+}

@@ -10,7 +10,8 @@ public:
     [[nodiscard]] auto partTwo(const std::string &input) const -> std::string override;
 
 private:
-    long maxJoltage(const std::string &bank) const;
+    long maxJoltagePartOne(const std::string &bank) const;
+    long maxJoltagePartTwo(const std::string &bank) const;
 };
 
 #endif //AOC25_DAY_THREE_H
