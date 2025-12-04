@@ -29,26 +29,30 @@ auto DayFour::partOne(const std::string &input) const -> std::string
 
 auto DayFour::partTwo(const std::string &input) const -> std::string
 {
-    auto grid = parseGrid(input);
-    const int height{static_cast<int>(grid.size())};
-    const int width{static_cast<int>(grid[0].size())};
+    auto currentGrid = parseGrid(input);
+    auto nextGrid = currentGrid;
+    const int height{static_cast<int>(currentGrid.size())};
+    const int width{static_cast<int>(currentGrid[0].size())};
     int totalRemoved{0};
     for (;;)
     {
         bool removed = false;
-        auto gridCopy{grid};
         for (int x{0}; x < width; ++x)
         {
             for (int y{0}; y < height; ++y)
             {
-                if (grid[y][x] == ROLL)
+                if (currentGrid[y][x] == ROLL)
                 {
-                    if (countNeighbours(grid, width, height, x, y) < 4)
+                    if (countNeighbours(currentGrid, width, height, x, y) < 4)
                     {
-                        gridCopy[y][x] = '.';
+                        nextGrid[y][x] = '.';
                         ++totalRemoved;
                         removed = true;
                     }
+                }
+                else
+                {
+                    nextGrid[y][x] = '.';
                 }
             }
         }
@@ -56,7 +60,7 @@ auto DayFour::partTwo(const std::string &input) const -> std::string
         {
             break;
         }
-        grid = std::move(gridCopy);
+        currentGrid.swap(nextGrid);
     }
     return std::to_string(totalRemoved);
 }
