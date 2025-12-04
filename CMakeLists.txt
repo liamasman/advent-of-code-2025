@@ -21,6 +21,8 @@ add_library(aoc25lib SHARED
         include/utils/string_utils.h
         include/days/day_two.h
         src/days/day_two.cpp
+        include/days/day_three.h
+        src/days/day_three.cpp
 )
 
 target_include_directories(aoc25lib PUBLIC include)
@@ -32,7 +34,8 @@ enable_testing()
 add_executable(aoc25test
         test/day_runner_test.cpp
         test/days/day_one_test.cpp
-        test/days/day_two_test.cpp)
+        test/days/day_two_test.cpp
+        test/days/day_three_test.cpp)
 target_link_libraries(
         aoc25test
         aoc25lib
