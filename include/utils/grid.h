@@ -47,17 +47,21 @@ private:
                                                             {1, 1},
                                                             {0, 1},
                                                             {-1, 1}}};
+
+    static constexpr auto validateDimensions(size_t dataSize, int width, int height) -> void
+    {
+        assert(dataSize == static_cast<size_t>(width) * height);
+    }
 public:
     constexpr Grid(const std::vector<char> &data, int width, int height)
         : _data{data}, _width{width}, _height{height}
     {
-        assert(data.size() == _width * _height);
+        validateDimensions(data.size(), width, height);
     }
-    
+
     constexpr Grid(const std::string &data, int width, int height)
-        : _data{data.begin(), data.end()}, _width{width}, _height{height}
+        : Grid(std::vector(data.begin(), data.end()), width, height)
     {
-        assert(data.size() == _width * _height);
     }
 
     constexpr auto getCell(int x, int y) -> char
