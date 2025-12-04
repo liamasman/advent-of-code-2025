@@ -53,8 +53,8 @@ auto DayFour::partTwo(const std::string &input) const -> std::string
     return std::to_string(totalRemoved);
 }
 
-auto DayFour::countNeighbours(const Grid &grid,
-    int x, int y) const -> int
+auto DayFour::countNeighbours(const Grid<char> &grid,
+    int x, int y) -> int
 {
     int count{0};
     for (const auto& neighbour : grid.getNeighbours(x, y))

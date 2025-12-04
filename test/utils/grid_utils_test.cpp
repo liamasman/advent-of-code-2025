@@ -18,7 +18,7 @@ TEST(ParseGridTest, CanParseGrid)
         "@.@.@@@.@."
     };
     const auto grid = parseGrid(input);
-    const Grid expected{
+    const Grid<char> expected{
         "..@@.@@@@."
         "@@@.@.@.@@"
         "@@@@@.@.@@"
@@ -49,7 +49,7 @@ TEST(ParseGridTest, NewLineAtEndIsIgnored)
         "@.@.@@@.@.\n"
     };
     const auto grid = parseGrid(input);
-    const Grid expected{
+    const Grid<char> expected{
         "..@@.@@@@."
         "@@@.@.@.@@"
         "@@@@@.@.@@"

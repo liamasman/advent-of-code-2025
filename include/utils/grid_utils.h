@@ -8,7 +8,7 @@
 #include "grid.h"
 #include "string_utils.h"
 
-inline auto parseGrid(const std::string &input) -> Grid
+inline auto parseGrid(const std::string &input) -> Grid<char>
 {
     int width{0};
     int height{0};

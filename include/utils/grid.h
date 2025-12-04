@@ -6,10 +6,11 @@
 #include <vector>
 #include <iostream>
 
+template<typename T>
 class Grid
 {
 private:
-    std::vector<char> _data;
+    std::vector<T> _data;
     int _width;
     int _height;
 
@@ -53,7 +54,7 @@ private:
         assert(dataSize == static_cast<size_t>(width) * height);
     }
 public:
-    constexpr Grid(const std::vector<char> &data, int width, int height)
+    constexpr Grid(const std::vector<T> &data, int width, int height)
         : _data{data}, _width{width}, _height{height}
     {
         validateDimensions(data.size(), width, height);
@@ -64,22 +65,22 @@ public:
     {
     }
 
-    constexpr auto getCell(int x, int y) -> char
+    constexpr auto getCell(int x, int y) -> T
     {
         return _data[y * _width + x];
     }
 
-    constexpr auto getCell(int x, int y) const -> const char
+    constexpr auto getCell(int x, int y) const -> const T
     {
         return _data[y * _width + x];
     }
 
-    constexpr auto setCell(int x, int y, char value) -> void
+    constexpr auto setCell(int x, int y, T value) -> void
     {
         _data[coordinateIndex(x, y)] = value;
     }
 
-    constexpr auto getNeighbours(int x, int y) const -> std::vector<char>
+    constexpr auto getNeighbours(int x, int y) const -> std::vector<T>
     {
         std::vector<char> neighbours{};
         for (const auto& [dx, dy] : DIRECTIONS)

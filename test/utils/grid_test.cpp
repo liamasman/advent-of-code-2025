@@ -11,7 +11,7 @@ TEST(GridTest, CanGetCellContents)
         "abcde"
         "fghij"
     };
-    const Grid grid{input, 5, 4};
+    const Grid<char> grid{input, 5, 4};
     EXPECT_EQ('1', grid.getCell(0, 0));
     EXPECT_EQ('2', grid.getCell(1, 0));
     EXPECT_EQ('3', grid.getCell(2, 0));
@@ -42,7 +42,7 @@ TEST(GridTest, CanGetNeighbours)
         "abcde"
         "fghij"
     };
-    const Grid grid{input, 5, 4};
+    const Grid<char> grid{input, 5, 4};
     const auto neighbours = grid.getNeighbours(0, 0);
     EXPECT_THAT(neighbours, ::testing::UnorderedElementsAre(
         '2',

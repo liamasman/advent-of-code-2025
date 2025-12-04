@@ -10,7 +10,7 @@ public:
     [[nodiscard]] auto partOne(const std::string &input) const -> std::string override;
     [[nodiscard]] auto partTwo(const std::string &input) const -> std::string override;
 private:
-    auto countNeighbours(const Grid &grid, int x, int y) const -> int;
+    static auto countNeighbours(const Grid<char> &grid, int x, int y) -> int;
 };
 
 #endif //AOC25_DAY_FOUR_H
