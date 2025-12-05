@@ -74,7 +74,7 @@ namespace aoc25::days
         return ParsedInput{ranges, ids};
     }
 
-    [[nodiscard]] auto DayFive::ParsedInput::sortAndCombine(const std::vector<Range> &ranges) -> std::vector<Range>
+    auto DayFive::ParsedInput::sortAndCombine(const std::vector<Range> &ranges) -> std::vector<Range>
     {
         auto sorted = ranges;
         std::ranges::sort(sorted.begin(), sorted.end(), [](const auto &lhs, const auto &rhs) { return lhs.start() < rhs.start(); });
