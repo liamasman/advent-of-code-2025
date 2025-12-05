@@ -7,12 +7,12 @@
 
 namespace aoc25::utils
 {
-    [[nodiscard]] constexpr auto getLines(const std::string &input)
+    [[nodiscard]] constexpr auto getLines(const std::string_view &input)
     {
         return std::views::split(input, '\n');
     }
 
-    [[nodiscard]] constexpr auto splitCommas(const std::string &input)
+    [[nodiscard]] constexpr auto splitCommas(const std::string_view &input)
     {
         return std::views::split(input, ',');
     }
@@ -38,7 +38,7 @@ namespace aoc25::utils
         return contents;
     }
 
-    [[nodiscard]] constexpr auto repeat(const std::string &str, const int n) -> std::string
+    [[nodiscard]] constexpr auto repeat(const std::string_view &str, const int n) -> std::string
     {
         std::ostringstream os;
         for(int i{0}; i < n; i++)

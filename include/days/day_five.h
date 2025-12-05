@@ -46,8 +46,8 @@ namespace aoc25::days
             [[nodiscard]] auto constexpr ranges() const -> const std::vector<Range>& { return _ranges; };
         };
 
-        [[nodiscard]] static auto parseRange(const std::string &range) -> Range;
-        [[nodiscard]] static auto parseInput(const std::string &input) -> ParsedInput;
+        [[nodiscard]] static auto parseRange(const std::string_view &range) -> Range;
+        [[nodiscard]] static auto parseInput(const std::string_view &input) -> ParsedInput;
     };
 }
 

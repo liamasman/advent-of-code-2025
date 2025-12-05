@@ -42,13 +42,13 @@ namespace aoc25::days
         return value >= _start && value <= _end;
     }
 
-    auto DayFive::parseRange(const std::string &range) -> Range
+    auto DayFive::parseRange(const std::string_view &range) -> Range
     {
         const auto &[start, end] = utils::getPair(range, '-');
         return Range{std::stol(start), std::stol(end)};
     }
 
-    auto DayFive::parseInput(const std::string &input) -> ParsedInput
+    auto DayFive::parseInput(const std::string_view &input) -> ParsedInput
     {
         auto lines = utils::getLines(input);
 
@@ -58,8 +58,7 @@ namespace aoc25::days
         auto iterator = lines.begin();
         for (; !(*iterator).empty(); ++iterator)
         {
-            const std::string line((*iterator).begin(), (*iterator).end());
-            const auto range = parseRange(line);
+            const auto range = parseRange({(*iterator).begin(), (*iterator).end()});
             ranges.push_back(range);
         }
 
