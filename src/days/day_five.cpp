@@ -4,9 +4,6 @@
 
 namespace aoc25::days
 {
-    /* Potential to optimize by sorting ranges, then doing a binary search on
-     * the ranges to find one that fits
-     */
     auto DayFive::partOne(const std::string &input) const -> std::string
     {
         const auto parsedInput = parseInput(input);
@@ -27,22 +24,20 @@ namespace aoc25::days
         return std::to_string(count);
     }
 
-    auto DayFive::ParsedInput::ids() const -> const std::vector<long> &
-    {
-        return _ids;
-    }
-
-    auto DayFive::ParsedInput::ranges() const -> const std::vector<Range> &
-    {
-        return _ranges;
-    }
-
     auto DayFive::partTwo(const std::string &input) const -> std::string
     {
-        return "To be implemented";
+        const auto parsedInput = parseInput(input);
+
+        long count{0};
+        for (const auto &range : parsedInput.ranges())
+        {
+            const auto size = range.end() - range.start() + 1;
+            count += size;
+        }
+        return std::to_string(count);
     }
 
-    auto DayFive::Range::isInRange(long value) const -> bool
+    auto constexpr DayFive::Range::isInRange(long value) const -> bool
     {
         return value >= _start && value <= _end;
     }
@@ -77,5 +72,34 @@ namespace aoc25::days
         }
 
         return ParsedInput{ranges, ids};
+    }
+
+    [[nodiscard]] auto DayFive::ParsedInput::sortAndCombine(const std::vector<Range> &ranges) -> std::vector<Range>
+    {
+        auto sorted = ranges;
+        std::ranges::sort(sorted.begin(), sorted.end(), [](const auto &lhs, const auto &rhs) { return lhs.start() < rhs.start(); });
+
+        std::vector<Range> merged;
+        for (const auto &range : sorted)
+        {
+            if (merged.empty())
+            {
+                merged.emplace_back(range);
+                continue;
+            }
+
+            const auto &last = merged.back();
+            if (last.end() >= range.start())
+            {
+                const Range mergedRange{last.start(), std::max(last.end(), range.end())};
+                merged.pop_back();
+                merged.emplace_back(mergedRange);
+            }
+            else
+            {
+                merged.emplace_back(range);
+            }
+        }
+        return merged;
     }
 }

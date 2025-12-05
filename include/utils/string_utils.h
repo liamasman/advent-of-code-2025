@@ -7,17 +7,17 @@
 
 namespace aoc25::utils
 {
-    inline auto getLines(const std::string &input)
+    [[nodiscard]] constexpr auto getLines(const std::string &input)
     {
         return std::views::split(input, '\n');
     }
 
-    inline auto splitCommas(const std::string &input)
+    [[nodiscard]] constexpr auto splitCommas(const std::string &input)
     {
         return std::views::split(input, ',');
     }
 
-    inline auto getPair(const std::string_view input, const char delimiter)
+    [[nodiscard]] constexpr auto getPair(const std::string_view input, const char delimiter)
     {
         //TODO exception if can not find delimiter
         const auto index = input.find(delimiter);
@@ -27,7 +27,7 @@ namespace aoc25::utils
         );
     }
 
-    inline auto readFile(const std::string &filename) -> std::string
+    [[nodiscard]] inline auto readFile(const std::string &filename) -> std::string
     {
         //TODO exception if file does not exist
         std::ifstream inputFile{filename};
@@ -38,7 +38,7 @@ namespace aoc25::utils
         return contents;
     }
 
-    inline auto repeat(const std::string &str, const int n) -> std::string
+    [[nodiscard]] constexpr auto repeat(const std::string &str, const int n) -> std::string
     {
         std::ostringstream os;
         for(int i{0}; i < n; i++)

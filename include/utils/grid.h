@@ -16,12 +16,12 @@ namespace aoc25::utils
         int _width;
         int _height;
 
-        constexpr auto isValidPosition(const int x, const int y) const -> bool
+        [[nodiscard]] constexpr auto isValidPosition(const int x, const int y) const -> bool
         {
             return x >= 0 && x < _width && y >= 0 && y < _height;
         }
 
-        constexpr auto coordinateIndex(const int x, const int y) const -> int
+        [[nodiscard]] constexpr auto coordinateIndex(const int x, const int y) const -> int
         {
             return y * _width + x;
         }
@@ -40,7 +40,7 @@ namespace aoc25::utils
             assert(dataSize == static_cast<size_t>(width) * height);
         }
     public:
-        constexpr Grid(const std::vector<T> &data, const int width, const int height)
+        constexpr Grid(const std::vector<T> data, const int width, const int height)
             : _data{data}, _width{width}, _height{height}
         {
             validateDimensions(data.size(), width, height);
@@ -51,12 +51,12 @@ namespace aoc25::utils
         {
         }
 
-        constexpr auto getCell(const int x, const int y) -> T
+        [[nodiscard]] constexpr auto getCell(const int x, const int y) -> T
         {
             return _data[y * _width + x];
         }
 
-        constexpr auto getCell(const int x, const int y) const -> T
+        [[nodiscard]] constexpr auto getCell(const int x, const int y) const -> T
         {
             return _data[y * _width + x];
         }
@@ -66,7 +66,7 @@ namespace aoc25::utils
             _data[coordinateIndex(x, y)] = value;
         }
 
-        constexpr auto getNeighbours(const int x, const int y) const -> std::vector<T>
+        [[nodiscard]] constexpr auto getNeighbours(const int x, const int y) const -> std::vector<T>
         {
             std::vector<char> neighbours{};
             for (const auto& [dx, dy] : DIRECTIONS)
@@ -81,12 +81,12 @@ namespace aoc25::utils
             return neighbours;
         }
 
-        constexpr auto width() const -> int
+        [[nodiscard]] constexpr auto width() const -> int
         {
             return _width;
         }
 
-        constexpr auto height() const -> int
+        [[nodiscard]] constexpr auto height() const -> int
         {
             return _height;
         }

@@ -10,7 +10,7 @@
 
 namespace aoc25::utils
 {
-    inline auto parseGrid(const std::string &input) -> Grid<char>
+    constexpr auto parseGrid(const std::string &input) -> Grid<char>
     {
         int width{0};
         int height{0};
