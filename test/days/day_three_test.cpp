@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+using namespace aoc25::days;
+
 TEST(DayThreeTest, PartOneExample)
 {
     const std::string input{
@@ -18,8 +20,8 @@ TEST(DayThreeTest, PartOneExample)
 TEST(DayThreeTest, PartOneTrialOne)
 {
     const std::string input{
-    "4732321333332463233337712234322122322247222252423773321362313613333336333732233372323328332333322777"
-    };
+        "4732321333332463233337712234322122322247222252423773321362313613333336333732233372323328332333322777"
+        };
     const DayThree day_three{};
 
     EXPECT_EQ(day_three.partOne(input), "87");
@@ -28,8 +30,8 @@ TEST(DayThreeTest, PartOneTrialOne)
 TEST(DayThreeTest, PartOneTrialTwo)
 {
     const std::string input{
-    "12345"
-    };
+        "12345"
+        };
     const DayThree day_three{};
 
     EXPECT_EQ(day_three.partOne(input), "45");
@@ -38,8 +40,8 @@ TEST(DayThreeTest, PartOneTrialTwo)
 TEST(DayThreeTest, PartOneTrialThree)
 {
     const std::string input{
-    "2776"
-    };
+        "2776"
+        };
     const DayThree day_three{};
 
     EXPECT_EQ(day_three.partOne(input), "77");

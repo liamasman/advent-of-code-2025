@@ -8,37 +8,40 @@
 #include "grid.h"
 #include "string_utils.h"
 
-inline auto parseGrid(const std::string &input) -> Grid<char>
+namespace aoc25::utils
 {
-    int width{0};
-    int height{0};
-
-    std::vector<char> data;
-    for (auto &&line : getLines(input))
+    inline auto parseGrid(const std::string &input) -> Grid<char>
     {
-        int len{0};
-        for (const char ch : line)
-        {
-            if (ch == '\r') { continue; }
-            data.push_back(ch);
-            ++len;
-        }
-        if (len == 0)
-        {
-            continue;
-        }
-        if (width == 0)
-        {
-            width = len;
-        }
-        else if (len != width)
-        {
-            throw std::runtime_error("parseGrid: inconsistent row width");
-        }
-        ++height;
-    }
+        int width{0};
+        int height{0};
 
-    return Grid{data, width, height};
+        std::vector<char> data;
+        for (auto &&line : getLines(input))
+        {
+            int len{0};
+            for (const char ch : line)
+            {
+                if (ch == '\r') { continue; }
+                data.push_back(ch);
+                ++len;
+            }
+            if (len == 0)
+            {
+                continue;
+            }
+            if (width == 0)
+            {
+                width = len;
+            }
+            else if (len != width)
+            {
+                throw std::runtime_error("parseGrid: inconsistent row width");
+            }
+            ++height;
+        }
+
+        return Grid{data, width, height};
+    }
 }
 
 #endif //AOC25_GRID_UTILS_H

@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
+using namespace aoc25::utils;
+
 TEST(GridTest, CanGetCellContents)
 {
     const std::string input{

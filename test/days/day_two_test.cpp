@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+using namespace aoc25::days;
+
 TEST(DayTwoTest, PartOneExample)
 {
     const std::string input{"11-22,95-115,998-1012,1188511880-1188511890,222220-222224,"

@@ -2,13 +2,16 @@
 #define AOC25_ABSTRACT_DAY_H
 #include <string>
 
-class AbstractDay
+namespace aoc25::days
 {
-public:
-    virtual ~AbstractDay() = default;
+    class AbstractDay
+    {
+    public:
+        virtual ~AbstractDay() = default;
 
-    [[nodiscard]] virtual auto partOne(const std::string& input) const -> std::string = 0;
-    [[nodiscard]] virtual auto partTwo(const std::string& input) const -> std::string = 0;
-};
+        [[nodiscard]] virtual auto partOne(const std::string& input) const -> std::string = 0;
+        [[nodiscard]] virtual auto partTwo(const std::string& input) const -> std::string = 0;
+    };
+}
 
 #endif //AOC25_ABSTRACT_DAY_H

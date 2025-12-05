@@ -8,6 +8,9 @@
 #include "days/day_three.h"
 #include "days/day_two.h"
 
+using namespace aoc25;
+using namespace aoc25::days;
+
 void printUsage(const char* programName)
 {
     std::cout << "Usage: " << programName << " day part [filename]\n";

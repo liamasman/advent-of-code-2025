@@ -6,13 +6,14 @@
 #include "RunResult.h"
 #include "../abstract_day.h"
 
-
-class DayRunner
+namespace aoc25
 {
-public:
-    static auto run(const AbstractDay &day, int part, const std::optional<std::string> &
-                    inputFilename) -> RunResult;
-};
-
+    class DayRunner
+    {
+    public:
+        static auto run(const days::AbstractDay &day, int part, const std::optional<std::string> &
+                        inputFilename) -> RunResult;
+    };
+}
 
 #endif //AOC25_DAY_RUNNER_H

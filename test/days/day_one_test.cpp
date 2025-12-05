@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+using namespace aoc25::days;
+
 TEST(DayOneTest, PartOneExample)
 {
     const std::string input{

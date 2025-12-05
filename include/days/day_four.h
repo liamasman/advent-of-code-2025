@@ -4,13 +4,16 @@
 #include "abstract_day.h"
 #include "utils/grid.h"
 
-class DayFour final : public AbstractDay
+namespace aoc25::days
 {
-public:
-    [[nodiscard]] auto partOne(const std::string &input) const -> std::string override;
-    [[nodiscard]] auto partTwo(const std::string &input) const -> std::string override;
-private:
-    static auto countNeighbours(const Grid<char> &grid, int x, int y) -> int;
-};
+    class DayFour final : public AbstractDay
+    {
+    public:
+        [[nodiscard]] auto partOne(const std::string &input) const -> std::string override;
+        [[nodiscard]] auto partTwo(const std::string &input) const -> std::string override;
+    private:
+        static auto countNeighbours(const utils::Grid<char> &grid, int x, int y) -> int;
+    };
+}
 
 #endif //AOC25_DAY_FOUR_H

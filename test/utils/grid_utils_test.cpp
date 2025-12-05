@@ -3,6 +3,8 @@
 
 #include <gtest/gtest.h>
 
+using namespace aoc25::utils;
+
 TEST(ParseGridTest, CanParseGrid)
 {
     const std::string input{

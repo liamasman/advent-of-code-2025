@@ -3,11 +3,14 @@
 #include <chrono>
 #include <string>
 
-struct RunResult
+namespace aoc25
 {
-    std::string result;
-    std::chrono::microseconds fileReadDuration;
-    std::chrono::microseconds runDuration;
+    struct RunResult
+    {
+        std::string result;
+        std::chrono::microseconds fileReadDuration;
+        std::chrono::microseconds runDuration;
 
-};
+    };
+}
 #endif //AOC25_RUN_RESULT_H

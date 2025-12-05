@@ -3,7 +3,9 @@
 #include <fstream>
 #include <gtest/gtest.h>
 
-class StubDay: public AbstractDay
+using namespace aoc25;
+
+class StubDay: public days::AbstractDay
 {
     [[nodiscard]] std::string partOne(const std::string& input) const override
     {
