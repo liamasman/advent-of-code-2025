@@ -32,7 +32,7 @@ namespace aoc25::days
         private:
             std::vector<Range> _ranges;
             const std::vector<long> _ids;
-            [[nodiscard]] static auto sortAndCombine(const std::vector<Range> & vector) -> std::vector<Range>;
+            [[nodiscard]] static auto sortAndCombine(const std::vector<Range> &ranges) -> std::vector<Range>;
 
         public:
             ParsedInput(const std::vector<Range>& ranges, const std::vector<long>& ids)

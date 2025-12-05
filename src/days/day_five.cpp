@@ -37,7 +37,7 @@ namespace aoc25::days
         return std::to_string(count);
     }
 
-    auto constexpr DayFive::Range::isInRange(long value) const -> bool
+    auto constexpr DayFive::Range::isInRange(const long value) const -> bool
     {
         return value >= _start && value <= _end;
     }
