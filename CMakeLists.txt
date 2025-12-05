@@ -28,6 +28,8 @@ add_library(aoc25lib SHARED
         src/days/day_four.cpp
         include/utils/grid_utils.h
         include/utils/grid.h
+        include/days/day_five.h
+        src/days/day_five.cpp
 )
 
 target_include_directories(aoc25lib PUBLIC include)
@@ -44,6 +46,7 @@ add_executable(aoc25test
         test/days/day_four_test.cpp
         test/utils/grid_utils_test.cpp
         test/utils/grid_test.cpp
+        test/days/day_five_test.cpp
 )
 target_link_libraries(
         aoc25test

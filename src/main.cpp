@@ -2,6 +2,7 @@
 #include <memory>
 #include <vector>
 
+#include "days/day_five.h"
 #include "runner/day_runner.h"
 #include "days/day_four.h"
 #include "days/day_one.h"
@@ -23,6 +24,7 @@ auto generateDays() -> std::vector<std::unique_ptr<AbstractDay>>
     vector.emplace_back(std::make_unique<DayTwo>());
     vector.emplace_back(std::make_unique<DayThree>());
     vector.emplace_back(std::make_unique<DayFour>());
+    vector.emplace_back(std::make_unique<DayFive>());
     return vector;
 }
 
