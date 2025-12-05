@@ -9,14 +9,17 @@ namespace aoc25::days
         const auto parsedInput = parseInput(input);
 
         int count{0};
-        for (const auto &id: parsedInput.ids())
+        const auto &ranges = parsedInput.ranges();
+        for (const auto &id : parsedInput.ids())
         {
-            for (const auto &range: parsedInput.ranges())
+            auto it = std::ranges::upper_bound(ranges, id, std::less<>{}, [](const auto &r) { return r.start(); });
+            if (it != ranges.begin())
             {
-                if (range.isInRange(id))
+                auto prevIt = it;
+                --prevIt;
+                if (prevIt->end() >= id)
                 {
                     ++count;
-                    break;
                 }
             }
         }
