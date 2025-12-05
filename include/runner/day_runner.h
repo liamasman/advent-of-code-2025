@@ -3,7 +3,7 @@
 #include <optional>
 #include <string>
 
-#include "RunResult.h"
+#include "run_result.h"
 #include "../abstract_day.h"
 
 namespace aoc25

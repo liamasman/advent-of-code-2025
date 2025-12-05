@@ -3,7 +3,7 @@
 
 #include <chrono>
 
-#include "runner/RunResult.h"
+#include "runner/run_result.h"
 
 namespace aoc25
 {

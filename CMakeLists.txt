@@ -15,7 +15,7 @@ FetchContent_MakeAvailable(googletest)
 add_library(aoc25lib SHARED
         src/runner/day_runner.cpp
         include/runner/day_runner.h
-        include/runner/RunResult.h
+        include/runner/run_result.h
         include/abstract_day.h
         src/days/day_one.cpp
         include/days/day_one.h
