@@ -4,6 +4,7 @@
 #include <ranges>
 #include <sstream>
 #include <string>
+#include <vector>
 
 namespace aoc25::utils
 {
@@ -15,6 +16,20 @@ namespace aoc25::utils
     [[nodiscard]] constexpr auto splitCommas(const std::string_view &input)
     {
         return std::views::split(input, ',');
+    }
+
+    [[nodiscard]] constexpr auto splitWhitespace(const std::string &input)
+    {
+        std::vector<std::string> words;
+        std::stringstream ss(input);
+        std::string word;
+
+        while (ss >> word)
+        {
+            words.push_back(word);
+        }
+
+        return words;
     }
 
     [[nodiscard]] constexpr auto getPair(const std::string_view input, const char delimiter)
