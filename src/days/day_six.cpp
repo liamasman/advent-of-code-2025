@@ -68,6 +68,47 @@ namespace aoc25::days
 
     auto DaySix::partTwo(const std::string &input) const -> std::string
     {
-        return "To be implemented.";
+        auto lines{utils::getLines(input)};
+        std::vector<std::string> linesvector{};
+        for (const auto& line : lines)
+        {
+            linesvector.emplace_back(line.begin(), line.end());
+        }
+
+        long total{0};
+        long problemResult{0};
+        char operand{};
+        const auto& operandsLine = linesvector.back();
+        for (size_t i{0}; i < linesvector[0].size(); ++i)
+        {
+            if (operandsLine[i] == '+' || operandsLine[i] == '*')
+            {
+                total += problemResult;
+                operand = operandsLine[i];
+                problemResult = operand == '+' ? 0 : 1;
+            }
+
+            int columnValue{0};
+            for (size_t row{0}; row < linesvector.size() - 1; ++row)
+            {
+                if (linesvector[row][i] != ' ')
+                {
+                    columnValue = columnValue * 10 + linesvector[row][i] - '0';
+                }
+            }
+
+            if (columnValue != 0)
+            {
+                switch (operand)
+                {
+                    case '+': problemResult += columnValue; break;
+                    case '*': problemResult *= columnValue; break;
+                    default: throw std::runtime_error{"Invalid operand " + std::to_string(operand) + " at position " + std::to_string(i)};
+                }
+            }
+        }
+        total += problemResult;
+
+        return std::to_string(total);
     }
 }
