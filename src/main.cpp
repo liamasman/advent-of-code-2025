@@ -6,6 +6,7 @@
 #include "runner/day_runner.h"
 #include "days/day_four.h"
 #include "days/day_one.h"
+#include "days/day_seven.h"
 #include "days/day_six.h"
 #include "days/day_three.h"
 #include "days/day_two.h"
@@ -27,6 +28,7 @@ auto generateDays() -> std::vector<std::unique_ptr<AbstractDay>>
     vector.emplace_back(std::make_unique<DayFour>());
     vector.emplace_back(std::make_unique<DayFive>());
     vector.emplace_back(std::make_unique<DaySix>());
+    vector.emplace_back(std::make_unique<DaySeven>());
     return vector;
 }
 
@@ -41,9 +43,9 @@ auto main(const int argc, const char *argv[]) -> int
     }
 
     const int day{std::stoi(argv[1])};
-    if (day <= 0 || day > 12)
+    if (day <= 0 || day > days.size())
     {
-        printUsage(argv[0]);
+        std::cout << "Invalid day number: " << day << '\n';
         return 1;
     }
 
