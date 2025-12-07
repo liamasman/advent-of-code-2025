@@ -15,7 +15,10 @@ namespace aoc25::days
         [[nodiscard]] auto partTwo(const std::string& input) const -> std::string override;
 
     private:
-        static void progressBeam(std::vector<std::string>& lines, size_t line, int& count);
+        static void progressBeamPartOne(std::vector<std::string>& lines, size_t lineIndex, int& count);
+
+        static auto progressBeamPartTwo(std::vector<std::string> &lines, size_t lineIndex,
+                                 const std::vector<long> &pathsAtLine) -> std::vector<long>;
     };
 }
 

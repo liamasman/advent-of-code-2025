@@ -179,3 +179,29 @@ TEST(DaySevenTest, PartOneWithASplitterOnlyBeingFedByAnInactiveSplitter)
 
     EXPECT_EQ(day_seven.partOne(input), "1");
 }
+
+TEST(DaySevenTest, PartTwoExample)
+{
+    const std::string input{
+        ".......S.......\n"
+        "...............\n"
+        ".......^.......\n"
+        "...............\n"
+        "......^.^......\n"
+        "...............\n"
+        ".....^.^.^.....\n"
+        "...............\n"
+        "....^.^...^....\n"
+        "...............\n"
+        "...^.^...^.^...\n"
+        "...............\n"
+        "..^...^.....^..\n"
+        "...............\n"
+        ".^.^.^.^.^...^.\n"
+        "..............."
+    };
+
+    const DaySeven day_seven{};
+
+    EXPECT_EQ(day_seven.partTwo(input), "40");
+}
