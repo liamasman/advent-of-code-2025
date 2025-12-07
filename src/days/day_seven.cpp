@@ -10,7 +10,7 @@ namespace aoc25::days
     constexpr auto START = 'S';
     constexpr auto BEAM = '|';
     constexpr auto SPLITTER = '^';
-    constexpr auto ACTIVE_SPLITTER = 'V';
+    constexpr auto EMPTY = '.';
 
     auto DaySeven::partOne(const std::string &input) const -> std::string
     {
@@ -62,6 +62,10 @@ namespace aoc25::days
         {
             if (previousLine[i] != BEAM)
             {
+                if (lineToProgress[i] == SPLITTER)
+                {
+                    lineToProgress[i] = EMPTY;
+                }
                 continue;
             }
 
@@ -69,7 +73,6 @@ namespace aoc25::days
             {
                 ++count;
                 lineToProgress[i - 1] = BEAM;
-                lineToProgress[i] = ACTIVE_SPLITTER;
                 lineToProgress[i + 1] = BEAM;
             }
             else
@@ -90,13 +93,16 @@ namespace aoc25::days
         {
             if (previousLine[i] != BEAM)
             {
+                if (lineToProgress[i] == SPLITTER)
+                {
+                    lineToProgress[i] = EMPTY;
+                }
                 continue;
             }
 
             if (lineToProgress[i] == SPLITTER)
             {
                 lineToProgress[i - 1] = BEAM;
-                lineToProgress[i] = ACTIVE_SPLITTER;
                 lineToProgress[i + 1] = BEAM;
             }
             else
@@ -110,11 +116,11 @@ namespace aoc25::days
             if (lineToProgress[i] == BEAM)
             {
                 long ways{0};
-                if (i > 0 && lineToProgress[i - 1] == ACTIVE_SPLITTER)
+                if (i > 0 && lineToProgress[i - 1] == SPLITTER)
                 {
                     ways += pathsToPreviousLine[i - 1];
                 }
-                if (i < lineToProgress.size() - 1 && lineToProgress[i + 1] == ACTIVE_SPLITTER)
+                if (i < lineToProgress.size() - 1 && lineToProgress[i + 1] == SPLITTER)
                 {
                     ways += pathsToPreviousLine[i + 1];
                 }
