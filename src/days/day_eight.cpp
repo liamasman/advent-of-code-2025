@@ -192,36 +192,7 @@ auto DayEight::partTwo(
         auto circuitA = pointToCircuit.find(distance->_pointA);
         auto circuitB = pointToCircuit.find(distance->_pointB);
 
-        if (circuitA == pointToCircuit.end() && circuitB == pointToCircuit.end())
-        {
-            // Construct a new circuit
-            std::set<day_eight::Vec3> circuitBoxes;
-            circuitBoxes.emplace(distance->_pointA);
-            circuitBoxes.emplace(distance->_pointB);
-
-            auto circuit = std::make_shared<day_eight::Circuit>(circuitBoxes);
-
-            pointToCircuit.emplace(distance->_pointA, circuit);
-            pointToCircuit.emplace(distance->_pointB, circuit);
-            circuits.emplace(circuit);
-        }
-        else if (circuitB == pointToCircuit.end())
-        {
-            // Add point to circuit a
-            circuits.erase(circuitA->second);
-            circuitA->second->_junctionBoxes.emplace(distance->_pointB);
-            circuits.emplace(circuitA->second);
-            pointToCircuit.emplace(distance->_pointB, circuitA ->second);
-        }
-        else if (circuitA == pointToCircuit.end())
-        {
-            // Add point to circuit B
-            circuits.erase(circuitB->second);
-            circuitB->second->_junctionBoxes.emplace(distance->_pointA);
-            circuits.emplace(circuitB->second);
-            pointToCircuit.emplace(distance->_pointA, circuitB ->second);
-        }
-        else if (circuitA->second != circuitB->second)
+        if (circuitA->second != circuitB->second)
         {
             // Combine Circuit
             const auto circuitBJunctionBoxes = circuitB->second->_junctionBoxes;
