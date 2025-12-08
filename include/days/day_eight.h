@@ -13,11 +13,11 @@ namespace aoc25::days
         class Vec3
         {
         public:
-            const int _x;
-            const int _y;
-            const int _z;
+            const long _x;
+            const long _y;
+            const long _z;
 
-            Vec3(const int x, const int y, const int z) :
+            Vec3(const long x, const long y, const long z) :
                 _x{x}, _y{y}, _z{z}
             {};
 
