@@ -12,13 +12,13 @@ namespace aoc25::utils
 {
     constexpr auto parseGrid(const std::string &input) -> Grid<char>
     {
-        int width{0};
-        int height{0};
+        size_t width{0};
+        size_t height{0};
 
         std::vector<char> data;
         for (auto &&line : getLines(input))
         {
-            int len{0};
+            size_t len{0};
             for (const char ch : line)
             {
                 if (ch == '\r') { continue; }
