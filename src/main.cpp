@@ -6,6 +6,7 @@
 #include "days/day_five.h"
 #include "runner/day_runner.h"
 #include "days/day_four.h"
+#include "days/day_nine.h"
 #include "days/day_one.h"
 #include "days/day_seven.h"
 #include "days/day_six.h"
@@ -31,6 +32,7 @@ auto generateDays() -> std::vector<std::unique_ptr<AbstractDay>>
     vector.emplace_back(std::make_unique<DaySix>());
     vector.emplace_back(std::make_unique<DaySeven>());
     vector.emplace_back(std::make_unique<DayEight>());
+    vector.emplace_back(std::make_unique<DayNine>());
     return vector;
 }
 

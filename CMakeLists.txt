@@ -36,6 +36,8 @@ add_library(aoc25lib SHARED
         src/days/day_seven.cpp
         src/days/day_eight.cpp
         include/days/day_eight.h
+        include/days/day_nine.h
+        src/days/day_nine.cpp
 )
 
 target_include_directories(aoc25lib PUBLIC include)
@@ -56,6 +58,7 @@ add_executable(aoc25test
         test/days/day_six_test.cpp
         test/days/day_seven_test.cpp
         test/days/day_eight_test.cpp
+        test/days/day_nine_test.cpp
 )
 target_link_libraries(
         aoc25test
